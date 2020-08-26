@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS top_songsDB;
-CREATE database top_songsDB;
+DROP DATABASE IF EXISTS employeeTracker_DB;
+CREATE database employeeTracker_DB;
 
-USE top_songsDB;
+USE employeeTracker_DB;
 
 CREATE TABLE employee (
   id INT auto_increment  NOT NULL,
@@ -28,4 +28,9 @@ CREATE TABLE department (
   
 );
 
-
+insert into employee (first_name,last_name,)
+values (John, Danaher), (Gordon, Ryan), (Gary, Tonon);
+insert into employee_role (title,salary)
+values (coach,10000), (trainer, 7000), (assistant, 4000);
+insert into department(department_name)
+values(coaching), (training), (assisting);

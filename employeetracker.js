@@ -80,10 +80,15 @@ function addDepartment() {
           if (err) throw err;
           console.table(res);
           
-          beginTracker();
+          
+          
+          
         }
-      );
-      
+        
+        );
+        
+        
+        beginTracker()
       
     });
 }
@@ -145,11 +150,11 @@ function addRole() {
         }
         return false;
       }
-    }
+    },
     {
       name: "departmentID",
       type: "input",
-      message: "What is the salary of the role you'd like to add?",
+      message: "What is the department ID of the role you'd like to add?",
       validate: function(value) {
         if (isNaN(value) === false) {
           return true;
@@ -170,10 +175,10 @@ function addRole() {
         function(err, res) {
           if (err) throw err;
           console.table(res)
-          beginTracker();
-        
+          
         }
-      );
+        );
+        beginTracker();
       
       
     });
@@ -256,23 +261,31 @@ function employeeByRole(){
             console.table(res);
           }
         );
+      
       });
     }
 
     function roleByEmployee(){
       inquirer
-        .prompt({
+        .prompt([{
           name: "employeeLastName",
           type: "input",
           message: "What is the last name of the employee you'd like to search their role?"
-        })
+        },
+        {
+          name: "employeeFirstName",
+          type: "input",
+          message: "What is the last name of the employee you'd like to search their role?"
+        }
+      ])
         .then(function(answer) {
           const query ="SELECT title, last_name, first_name FROM employee_role INNER JOIN employee ON employee_role.id = employee.role_id  WHERE ?";
-          connection.query(query, {last_name: answer.employeeLastName},function(err, res) {
+          connection.query(query, {last_name: answer.employeeLastName, first_name: answer.employeeFirstName},function(err, res) {
               if (err) throw err;
               console.table(res);
             }
           );
+          
         });
       }
 
@@ -308,6 +321,7 @@ function employeeByRole(){
                   console.table(res);
                 }
               );
+              
             });
           }
 
@@ -370,6 +384,7 @@ function employeeByRole(){
               if (err) throw err;
               console.log(res)
                   });
+                  
               }
 
                 )}

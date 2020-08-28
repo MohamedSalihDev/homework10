@@ -12,7 +12,7 @@ CREATE TABLE department (
 CREATE TABLE employee_role (
   id INT auto_increment NOT NULL,
   title VARCHAR(30),
-  salary VARCHAR(30),
+  salary int,
   department_id INT,
   PRIMARY KEY(id),
   FOREIGN Key (department_id) REFERENCES department(id)
@@ -28,6 +28,6 @@ CREATE TABLE employee (
  FOREIGN KEY (role_id) REFERENCES employee_role(id)
 
 );
-insert into employee (first_name, last_name) values ("John", "Danaher"), ("Gordon", "Ryan"), ("Gary", "Tonon");
-insert into employee_role (title,salary) values ("coach",10000), ("trainer", 7000), ("assistant", 4000);
 insert into department(department_name) values("coaching"), ("training"), ("assisting");
+insert into employee_role (title,salary) values ("coach",10000), ("trainer", 7000), ("assistant", 4000);
+insert into employee (first_name, last_name) values ("John", "Danaher"), ("Gordon", "Ryan"), ("Gary", "Tonon");

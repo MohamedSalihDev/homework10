@@ -261,26 +261,20 @@ function employeeByRole(){
             console.table(res);
           }
         );
-      
+        
       });
     }
 
     function roleByEmployee(){
       inquirer
-        .prompt([{
+        .prompt({
           name: "employeeLastName",
           type: "input",
           message: "What is the last name of the employee you'd like to search their role?"
-        },
-        {
-          name: "employeeFirstName",
-          type: "input",
-          message: "What is the last name of the employee you'd like to search their role?"
-        }
-      ])
+        })
         .then(function(answer) {
           const query ="SELECT title, last_name, first_name FROM employee_role INNER JOIN employee ON employee_role.id = employee.role_id  WHERE ?";
-          connection.query(query, {last_name: answer.employeeLastName, first_name: answer.employeeFirstName},function(err, res) {
+          connection.query(query, {last_name: answer.employeeLastName},function(err, res) {
               if (err) throw err;
               console.table(res);
             }
